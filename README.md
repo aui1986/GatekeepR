@@ -55,3 +55,8 @@ docker compose -d --build
 GatekeepR ist auf die Zusammenarbeit mit der
 Finest-Grained Attribute-Based Policy Machine ausgelegt.
 Die Policy Machine liefert die primären Zugriffsrechte, GatekeepR verfeinert diese anschließend.
+
+## Test mittels Postman
+Um einen ersten Eindruck zu erhalten, liegt im Ordner /postman-testdata eine json welche bei einer lokaler Dockerinstanz von
+der Policy Machine die Datenbank mit Testdaten eines fiktiven Fahrzeugpools fühlt sowie geeignete Abfragen von un- und gefilterten Request an
+GatekeepR.
