@@ -1,6 +1,7 @@
 package com.gatekeepr.response;
 
 import com.gatekeepr.dto.AccessRequestDto;
+import com.gatekeepr.dto.ObjectProperties;
 import com.gatekeepr.dto.RuleDefinition;
 import com.gatekeepr.policy.PolicyEngine;
 import com.gatekeepr.policy.RuleUsage;
@@ -35,11 +36,13 @@ public class ResponseEngine {
     public Map<String, Object> filterAndTransform(
             Map<String, Object> rawData,
             Collection<String> allowedProperties,
+            Collection<ObjectProperties.DigitAccess> digitsAccess,
             AccessRequestDto request,
             Map<String, RuleUsage> ruleSummary
     ) {
         Map<String, Object> result = new LinkedHashMap<>();
         List<RuleDefinition> matchedRules = policyEngine.getMatchingRules(request);
+        Map<String, List<ObjectProperties.ReadableDigitsRange>> mergedRanges = mergeDigitRanges(digitsAccess);
 
         String objectClass = Optional.ofNullable(rawData.get("objectEntityClass"))
                 .map(Object::toString)
@@ -61,6 +64,13 @@ public class ResponseEngine {
             if (!allowedProperties.contains(key) && !isMandatory) continue;
 
             String qualifiedKey = objectClass + "." + key;
+
+            // DigitAccess-Anwendung
+            if (mergedRanges.containsKey(key) && value instanceof String s && !s.isEmpty()) {
+                value = applyDigitSlicing(s, mergedRanges.get(key));
+                trackRule(ruleSummary, qualifiedKey, "digitSlice", Map.of("source", "PM"));
+
+            }
 
             // Suche passende Regeln (erst qualified, dann unqualified)
             List<RuleDefinition> fieldRules = Optional.ofNullable(rulesPerField.get(qualifiedKey))
@@ -103,7 +113,6 @@ public class ResponseEngine {
     }
 
     // --- Transformationsmethoden ---
-
     private Object applyMasking(Object value) {
         if (value instanceof String s && s.length() > 3) {
             return s.substring(0, 2) + "*".repeat(Math.min(6, s.length() - 2));
@@ -133,8 +142,71 @@ public class ResponseEngine {
         return rounded + "+";
     }
 
-    // --- Tracking ---
+    // Hilfsmethoden für DigitAccess - Merge
+    private Map<String, List<ObjectProperties.ReadableDigitsRange>> mergeDigitRanges(Collection<ObjectProperties.DigitAccess> digitsAccessList) {
+        Map<String, List<ObjectProperties.ReadableDigitsRange>> mergedMap = new HashMap<>();
+        
+        if (digitsAccessList == null) return Collections.emptyMap();        
 
+        for (ObjectProperties.DigitAccess da : digitsAccessList) {
+            if (da.getReadableDigits() != null && !da.getReadableDigits().isEmpty()) {
+                mergedMap.computeIfAbsent(da.getProperty(), k -> new ArrayList<>())
+                        .addAll(da.getReadableDigits());
+            }
+        }
+
+        for (Map.Entry<String, List<ObjectProperties.ReadableDigitsRange>> e : mergedMap.entrySet()) {
+            e.setValue(mergeRanges(e.getValue()));
+        }
+
+        return mergedMap;
+    }
+
+    private List<ObjectProperties.ReadableDigitsRange> mergeRanges(List<ObjectProperties.ReadableDigitsRange> ranges) {
+        ranges.sort(Comparator.comparingInt(ObjectProperties.ReadableDigitsRange::getReadableDigitsFrom));
+        List<ObjectProperties.ReadableDigitsRange> merged = new ArrayList<>();
+        for (ObjectProperties.ReadableDigitsRange current : ranges) {
+            if (merged.isEmpty()) {
+                merged.add(current);
+            } else {
+                ObjectProperties.ReadableDigitsRange last = merged.get(merged.size() - 1);
+                if (current.getReadableDigitsFrom() <= last.getReadableDigitsTo() + 1) {
+                    last.setReadableDigitsTo(Math.max(last.getReadableDigitsTo(), current.getReadableDigitsTo()));
+                } else {
+                    merged.add(current);
+                }
+            }
+        }
+        return merged;
+    }
+
+    // Hilfsmethoden für DigitAccess - Slicing
+    private String applyDigitSlicing(Object value, List<ObjectProperties.ReadableDigitsRange> ranges) {
+
+        if (value == null) return null;        
+
+        String strValue = String.valueOf(value);
+        if (strValue.isEmpty() || ranges == null || ranges.isEmpty()) {
+            return strValue;
+        }
+
+        char[] chars = strValue.toCharArray();
+        Arrays.fill(chars, '*');
+
+        for (ObjectProperties.ReadableDigitsRange r : ranges) {
+            int from = Math.max(0, Math.min(r.getReadableDigitsFrom(), r.getReadableDigitsTo()) - 1); // 1-basiert -> 0-basiert
+            int to = Math.min(chars.length, Math.max(r.getReadableDigitsFrom(), r.getReadableDigitsTo()));
+            for (int i = from; i < to; i++) {
+                chars[i] = strValue.charAt(i);
+            }
+        }
+
+        return new String(chars);
+    }
+
+
+
+    // --- Tracking ---
     private void trackRule(Map<String, RuleUsage> summary, String fieldKey, String action, Map<String, Object> condition) {
         String countKey = fieldKey + "::" + action;
         summary.computeIfAbsent(countKey, k -> new RuleUsage(fieldKey, action, condition)).increment();

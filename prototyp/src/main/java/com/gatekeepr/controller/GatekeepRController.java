@@ -31,13 +31,14 @@ public class GatekeepRController {
         boolean hasSingle = dto.getObjectId() != null && !dto.getObjectId().isBlank();
         boolean hasMultiple = dto.getObjectIds() != null && !dto.getObjectIds().isEmpty();
         boolean hasEntityClass = dto.getObjectEntityClass() != null && !dto.getObjectEntityClass().isBlank();
+        boolean hasApplicationId = dto.getApplicationId() != null && !dto.getApplicationId().isBlank();
 
         if (!hasSingle && !hasMultiple && !hasEntityClass) {
             return "Entweder objectId, objectIds oder objectEntityClass muss angegeben sein.";
         }
 
-        if (hasSingle && (dto.getIdentityId() == null || dto.getIdentityId().isBlank())) {
-            return "identityId ist erforderlich beim Zugriff auf ein einzelnes Objekt.";
+        if (hasSingle && (dto.getIdentityId() == null || dto.getIdentityId().isBlank()) || !hasApplicationId) {
+            return "identityId und applicationId ist erforderlich beim Zugriff auf ein einzelnes Objekt.";
         }
 
         return null;
@@ -51,7 +52,8 @@ public class GatekeepRController {
      */
     @PostMapping("/request")
     public ResponseEntity<AccessResponseDto> handleAccessRequest(@RequestBody AccessRequestDto requestDto) {
-        log.info("Zugriffsanfrage erhalten: identityId='{}', requestedById='{}', objectId='{}', entityClass='{}'",
+        log.info("Zugriffsanfrage erhalten: applicationId='{}', identityId='{}', requestedById='{}', objectId='{}', entityClass='{}'",
+                requestDto.getApplicationId(),        
                 requestDto.getIdentityId(),
                 requestDto.getRequestedById(),
                 requestDto.getObjectId(),
@@ -74,7 +76,8 @@ public class GatekeepRController {
      */
     @PostMapping("/filtered")
     public ResponseEntity<FilteredAccessResponseDto> getFilteredDataOnly(@RequestBody AccessRequestDto requestDto) {
-        log.info("Zugriffsanfrage erhalten: identityId='{}', objectId='{}', entityClass='{}'",
+        log.info("Zugriffsanfrage erhalten: applicationId='{}', identityId='{}', objectId='{}', entityClass='{}'",
+                requestDto.getApplicationId(),
                 requestDto.getIdentityId(),
                 requestDto.getObjectId(),
                 requestDto.getObjectEntityClass());

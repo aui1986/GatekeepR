@@ -42,6 +42,7 @@ public class SourceDataClient {
             data.put("licensePlate", generateRandomPlate());
             data.put("brand", randomChoice(BRANDS));
             data.put("model", randomChoice(MODELS));
+            data.put("location", "DE");
             data.put("fuelType", randomChoice(FUEL_TYPES));
             data.put("mileage", 5000 + random.nextInt(195_000));
             data.put("status", randomChoice(STATUSES));

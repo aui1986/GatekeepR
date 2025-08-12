@@ -1,0 +1,2412 @@
+{
+	"info": {
+		"_postman_id": "c78d49a9-37af-41a6-97fc-ffa50a3e5404",
+		"name": "V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44559289"
+	},
+	"item": [
+		{
+			"name": "Testsystem Fahrzeugpool V2",
+			"item": [
+				{
+					"name": "Intentities",
+					"item": [
+						{
+							"name": "Create owner",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create fleet_team",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create driver 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120003\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create driver 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120004\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create admin 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120005\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "V2 Application",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",    \r\n\"applicationName\": \"TestApplication\",\r\n\"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Objects",
+					"item": [
+						{
+							"name": "Create Vehicle 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd130\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd131\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 3",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd132\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 4",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd133\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 5",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd134\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 6",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd135\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 7",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd136\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 8",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd137\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 9",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd138\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Vehicle 10",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd139\",\n    \"objectEntityClass\": \"Vehicle\",\n    \"properties\": [\n        \"brand\",\n        \"model\",\n        \"fuelType\",\n        \"licensePlate\",\n        \"status\",\n        \"location\",\n        \"mileage\",\n        \"lastServiceDate\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/object",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"object"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Rechte",
+					"item": [
+						{
+							"name": "Grant access to 120002 for vehicle_00",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd130?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd130"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_00",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd130?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd130"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_00",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd130?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd130"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_00",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ],\n    \"digitsAccess\": [\n        {\n            \"property\": \"licensePlate\",\n            \"readableDigits\": [\n                {\n                    \"readableDigitsFrom\": 1,\n                    \"readableDigitsTo\": 2\n                }\n            ],\n            \"type\": \"readProperties\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd130?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd130"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_01",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd131?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd131"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_01",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd131?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd131"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_01",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd131?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd131"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_01",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd131?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd131"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_02",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd132?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd132"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_02",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd132?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd132"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_02",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd132?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd132"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_02",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd132?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd132"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_03",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd133?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd133"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_03",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd133?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd133"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_03",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd133?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd133"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_03",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd133?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd133"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_04",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd134?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd134"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_04",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd134?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd134"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_04",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd134?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd134"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_04",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd134?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd134"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_05",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd135?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd135"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_05",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd135?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd135"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_05",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd135?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd135"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_05",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd135?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd135"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_06",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd136?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd136"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_06",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd136?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd136"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_06",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd136?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd136"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_06",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd136?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd136"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_07",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd137?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd137"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_07",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd137?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd137"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_07",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd137?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd137"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_07",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd137?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd137"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_08",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd138?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd138"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_08",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd138?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd138"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_08",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd138?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd138"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_08",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd138?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd138"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120002 for vehicle_09",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd139?identityId=11c408e0-1fcd-11ee-be56-0242ac120002&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd139"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120002"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120003 for vehicle_09",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd139?identityId=11c408e0-1fcd-11ee-be56-0242ac120003&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd139"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120003"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120004 for vehicle_09",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"status\",\n    \"location\",\n    \"mileage\"\n  ],\n  \"writeProperties\": [],\n  \"shareReadProperties\": [],\n  \"shareWriteProperties\": []\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd139?identityId=11c408e0-1fcd-11ee-be56-0242ac120004&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd139"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120004"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grant access to 120005 for vehicle_09",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"readProperties\": [\n    \"brand\",\n    \"model\",\n    \"fuelType\",\n    \"licensePlate\",\n    \"status\",\n    \"location\",\n    \"mileage\",\n    \"lastServiceDate\"\n  ],\n  \"writeProperties\": [\n    \"status\",\n    \"location\"\n  ],\n  \"shareReadProperties\": [\n    \"brand\",\n    \"status\"\n  ],\n  \"shareWriteProperties\": [\n    \"status\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8085/v1/application/f92a3c7b-1e6f-4a88-97df-b2d63a78c904/access/03389644-a202-449a-8906-69fab4dbd139?identityId=11c408e0-1fcd-11ee-be56-0242ac120005&requestedById=11c408e0-1fcd-11ee-be56-0242ac120001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"v1",
+										"application",
+										"f92a3c7b-1e6f-4a88-97df-b2d63a78c904",
+										"access",
+										"03389644-a202-449a-8906-69fab4dbd139"
+									],
+									"query": [
+										{
+											"key": "identityId",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120005"
+										},
+										{
+											"key": "requestedById",
+											"value": "11c408e0-1fcd-11ee-be56-0242ac120001"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Test V2",
+			"item": [
+				{
+					"name": "ungefiltert",
+					"item": [
+						{
+							"name": "GatekeepR single",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120005\",\r\n  \"requestedById\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\r\n  \"objectId\": \"03389644-a202-449a-8906-69fab4dbd130\",\r\n  \"objectEntityClass\": \"Vehicle\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/gatekeepr/request",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"gatekeepr",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GatekeepR multi",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120005\",\r\n  \"requestedById\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\r\n  \"objectEntityClass\": \"Vehicle\",\r\n  \"objectIds\":\r\n    [\r\n    \"03389644-a202-449a-8906-69fab4dbd130\",\r\n    \"03389644-a202-449a-8906-69fab4dbd131\"\r\n    ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/gatekeepr/request",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"gatekeepr",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GatekeepR all",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",\r\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120005\",\r\n    \"requestedById\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\r\n    \"objectEntityClass\": \"Vehicle\",\r\n    \"createdByMyOwn\" : \"false\",\r\n    \"pageSize\" : \"\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/gatekeepr/request",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"gatekeepr",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "gefiltert",
+					"item": [
+						{
+							"name": "GatekeepR Single",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",\r\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120005\",\r\n    \"objectId\": \"03389644-a202-449a-8906-69fab4dbd130\",\r\n    \"objectEntityClass\": \"Vehicle\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/gatekeepr/filtered",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"gatekeepr",
+										"filtered"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GatekeepR Multi",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",\r\n    \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\r\n    \"objectEntityClass\": \"Vehicle\",\r\n    \"objectIds\":\r\n        [\r\n        \"03389644-a202-449a-8906-69fab4dbd130\",\r\n        \"03389644-a202-449a-8906-69fab4dbd131\",\r\n        \"03389644-a202-449a-8906-69fab4dbd132\"\r\n        ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/gatekeepr/filtered",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"gatekeepr",
+										"filtered"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GatekeepR All",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120005\",\r\n  \"requestedById\": \"11c408e0-1fcd-11ee-be56-0242ac120005\",\r\n  \"objectEntityClass\": \"Vehicle\",\r\n  \"createdByMyOwn\" : \"\",\r\n  \"pageSize\" : \"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/gatekeepr/filtered",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"gatekeepr",
+										"filtered"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GatekeepR Multi + context",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"applicationId\": \"f92a3c7b-1e6f-4a88-97df-b2d63a78c904\",\r\n  \"identityId\": \"11c408e0-1fcd-11ee-be56-0242ac120001\",\r\n  \"objectEntityClass\": \"Vehicle\",\r\n  \"objectIds\": [\r\n    \"03389644-a202-449a-8906-69fab4dbd139\",\r\n    \"03389644-a202-449a-8906-69fab4dbd137\"\r\n  ],\r\n  \"context\": {\r\n    \"region\": \"external\",\r\n    \"role\": \"externalViewer\",\r\n    \"purpose\": \"externalReporting\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/gatekeepr/filtered",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"gatekeepr",
+										"filtered"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

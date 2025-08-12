@@ -18,6 +18,9 @@ import java.util.Map;
 @AllArgsConstructor
 public class AccessRequestDto {
 
+    /** Die ApplicationId um mehrere Anwendunsszenarien zu unterscheiden */
+    private String applicationId;
+
     /** Die Identität, für die der Zugriff geprüft werden soll (Pflicht bei Einzelobjektabfrage) */
     private String identityId;
 

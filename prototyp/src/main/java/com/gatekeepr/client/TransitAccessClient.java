@@ -4,7 +4,6 @@ import com.gatekeepr.dto.ObjectProperties;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -20,10 +19,7 @@ import java.util.*;
 @Component
 public class TransitAccessClient {
 
-    // @Value("${TRANSIT_BASE_URL:http://localhost:8085}")
-    // private String baseUrl;
-
-    private static final String TRANSIT_BASE_URL = "http://192.168.71.102:8085/api/v1";
+    private static final String TRANSIT_BASE_URL = "http://192.168.71.102:8085/v1"; //IP unter der die Polcy Machine errechbar ist
     private static final String API_KEY = "614D5358726EC07655BF4A38CA751E5055FEF920ECCAC2624C";
 
     private final RestTemplate restTemplate = new RestTemplate();
@@ -31,19 +27,17 @@ public class TransitAccessClient {
     /**
      * Abfrage von Zugriffsrechten auf ein einzelnes Objekt.
      *
+     * @param applicationId  ID der Application
      * @param objectId       Die ID des Objekts
      * @param identityId     Die ID der anfragenden Identität
      * @param requestedById  Die ID des ursprünglichen Anfragenden (z. B. System oder Benutzer)
      * @return Objekt mit Lese-/Schreibrechten oder leeres Rechteobjekt
      */
-    public AccessRights getAccessRights(String objectId, String identityId, String requestedById) {
-        String url = String.format("%s/access/%s?identityId=%s&requestedById=%s",
-                TRANSIT_BASE_URL, objectId, identityId, requestedById);
+    public AccessRights getAccessRights(String applicationId, String objectId, String identityId, String requestedById) {
+        String url = String.format("%s/application/%s/access/%s?identityId=%s&requestedById=%s",
+                TRANSIT_BASE_URL, applicationId, objectId, identityId, requestedById);
 
-        // String url = baseUrl + "/api/v1/access/" + objectId +
-        //     "?identityId=" + identityId + "&requestedById=" + requestedById;
 
-        //Debug
         log.info(url);
 
         HttpHeaders headers = new HttpHeaders();
@@ -58,8 +52,8 @@ public class TransitAccessClient {
                 return response.getBody();
             }
         } catch (HttpClientErrorException.NotFound e) {
-            log.info("Keine Zugriffsrechte in TRANSIT gefunden (404) fuer objectId='{}', identityId='{}'",
-                    objectId, identityId);
+            log.info("Keine Zugriffsrechte in TRANSIT gefunden (404) fuer applicationId='{}', objectId='{}', identityId='{}'",
+                    applicationId, objectId, identityId);
         } catch (Exception e) {
             log.error("Fehler beim Aufruf des TRANSIT-Systems", e);
         }
@@ -70,6 +64,7 @@ public class TransitAccessClient {
     /**
      * Abfrage aller Objekte, auf die eine bestimmte Identität Zugriff hat.
      *
+     * @param applicationId    ID der Application
      * @param identityId       Optional in manchen Zugriffsszenarios: Die Identität, für die Zugriffsrechte geprüft werden
      * @param requestedById    Die ID des aufrufenden Systems/Nutzers
      * @param entityClass      Der Entitätstyp des Zielobjekts (z. B. "Vehicle")
@@ -78,13 +73,14 @@ public class TransitAccessClient {
      * @return Liste der zugänglichen Objekte
      */
     public List<ObjectAccess> searchAccessibleObjects(
+            String applicationId, 
             String identityId,
             String requestedById,
             String entityClass,
             Boolean createdByMyOwn,
             Integer pageSize
     ) {
-        StringBuilder url = new StringBuilder(TRANSIT_BASE_URL + "/access/search/?");
+        StringBuilder url = new StringBuilder(TRANSIT_BASE_URL + "/application/" + applicationId + "/access/search/?");
 
         if (identityId != null && !identityId.isBlank()) {
             url.append("identityId=").append(identityId).append("&");
@@ -98,10 +94,10 @@ public class TransitAccessClient {
             url.append("&pagesize=").append(pageSize);
         }
 
+        log.info("TRANSIT-Objektsuche: {}", url);
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-API-KEY", API_KEY);
-
-        log.info("TRANSIT-Objektsuche: {}", url);
 
         try {
             ResponseEntity<SearchResponse> response = restTemplate.exchange(
@@ -148,10 +144,14 @@ public class TransitAccessClient {
             return new HashSet<>(Optional.ofNullable(objectProperties.getShareWriteProperties()).orElse(List.of()));
         }
 
+        public Set<ObjectProperties.DigitAccess> getDigitsAccess() {
+            return new HashSet<>(Optional.ofNullable(objectProperties.getDigitsAccess()).orElse(List.of()));
+        }
+
         public static AccessRights empty() {
             AccessRights ar = new AccessRights();
             ar.setObjectProperties(new ObjectProperties(
-                    List.of(), List.of(), List.of(), List.of()
+                    List.of(), List.of(), List.of(), List.of(), List.of()
             ));
             return ar;
         }
@@ -170,6 +170,7 @@ public class TransitAccessClient {
      */
     @Data
     public static class ObjectAccess {
+        private String applicationId; 
         private String objectId;
         private String objectEntityClass;
         private String identityId;
