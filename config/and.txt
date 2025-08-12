@@ -1,0 +1,10 @@
+[
+    {
+        "field": "vehicle.licensePlate",
+        "action": "mask",
+        "condition": {
+            "accessCount": { "greaterThan": 3 },
+            "objectCount": { "greaterThan": 5 }
+        }
+    }
+]

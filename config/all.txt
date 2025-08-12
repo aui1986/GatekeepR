@@ -1,0 +1,87 @@
+[
+  {
+    "field": "vehicle.licensePlate",
+    "action": "none",
+    "condition": {
+      "time": {
+        "after": "08:00",
+        "before": "11:00"
+      }
+    }
+  },
+  {
+    "field": "vehicle.licensePlate",
+    "action": "none",
+    "condition": {
+      "context": {
+        "role": "internal"
+      }
+    }
+  },
+  {
+    "field": "vehicle.licensePlate",
+    "action": "mask",
+    "condition": {
+      "accessCount": {
+        "greaterThan": 3
+      }
+    }
+  },
+  {
+    "field": "vehicle.licensePlate",
+    "action": "mask",
+    "condition": {
+      "objectCount": {
+        "greaterThan": 5
+      }
+    }
+  },
+  {
+    "field": "vehicle.mileage",
+    "action": "generalize",
+    "parameters": {
+      "roundTo": 10000
+    },
+    "condition": {
+      "always": true
+    }
+  },
+  {
+    "field": "vehicle.status",
+    "action": "remove",
+    "condition": {
+      "always": true
+    }
+  },
+  {
+    "field": "vehicle.status",
+    "action": "none",
+    "condition": {
+      "context": {
+        "role": "manager"
+      }
+    }
+  },
+  {
+    "field": "vehicle.brand",
+    "action": "pseudonymize",
+    "parameters": {
+      "prefix": "brand_",
+      "suffix": "_x"
+    },
+    "condition": {
+      "context": {
+        "purpose": "externalReporting"
+      }
+    }
+  },
+  {
+    "field": "vehicle.fuelType",
+    "action": "remove",
+    "condition": {
+      "context": {
+        "role": "gast"
+      }
+    }
+  }
+]

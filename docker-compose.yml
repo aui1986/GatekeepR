@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  gatekeepr:
+    build: .
+    container_name: gatekeepr
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config/rules.json:/config/rules.json:ro
