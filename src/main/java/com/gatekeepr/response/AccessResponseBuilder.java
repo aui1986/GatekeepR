@@ -7,6 +7,7 @@ import com.gatekeepr.policy.RuleUsage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,6 +33,7 @@ public class AccessResponseBuilder {
      * @return Neues {@link AccessibleObject} mit Filterergebnis
      */
     public AccessibleObject build(
+            String applicationId,
             String objectId,
             String entityClass,
             String identityId,
@@ -43,11 +45,13 @@ public class AccessResponseBuilder {
         Map<String, Object> filtered = responseEngine.filterAndTransform(
                 rawData,
                 rights.getReadProperties(),
+                rights.getDigitsAccess() != null ? rights.getDigitsAccess() : List.of(),
                 request,
                 ruleSummary
         );
 
         return new AccessibleObject(
+                applicationId,
                 objectId,
                 entityClass,
                 identityId,

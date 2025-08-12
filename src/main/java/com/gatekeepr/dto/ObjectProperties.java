@@ -28,4 +28,24 @@ public class ObjectProperties {
 
     /** Felder, die mit Schreibrechten an Dritte weitergegeben werden dürfen */
     private List<String> shareWriteProperties;
+
+    /** Felder, die mittels DigitAccess einsehbar bzw. eingeschränkt sind */
+    private List<DigitAccess> digitsAccess;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class DigitAccess {
+        private String property;
+        private List<ReadableDigitsRange> readableDigits;
+        private String type;
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReadableDigitsRange {
+        private int readableDigitsFrom;
+        private int readableDigitsTo;
+    }
 }

@@ -44,31 +44,32 @@ public class ObjectRequestHandler {
      * @return Komplette Zugriffsergebnisantwort
      */
     public AccessResponseDto handleRequest(AccessRequestDto req, Map<String, RuleUsage> ruleSummary) {
+        String applicationId = req.getApplicationId();
         String identityId = req.getIdentityId();
         String requestedById = Optional.ofNullable(req.getRequestedById()).filter(s -> !s.isBlank()).orElse(identityId);
 
         List<AccessibleObject> accessibleObjects = new ArrayList<>();
 
         // Entscheidungspfad je nach Anfrageart
-        if (req.getObjectIds() != null && !req.getObjectIds().isEmpty()) {
+        if (req.getObjectIds() != null && !req.getObjectIds().isEmpty()) { //Mehrfachanfrage von Objekten
             for (String objectId : req.getObjectIds()) {
-                AccessibleObject obj = handleDirectAccess(objectId, req.getObjectEntityClass(), identityId, requestedById, req, ruleSummary);
+                AccessibleObject obj = handleDirectAccess(applicationId, objectId, req.getObjectEntityClass(), identityId, requestedById, req, ruleSummary);
                 if (obj != null) accessibleObjects.add(obj);
             }
-        } else if (req.getObjectId() != null && !req.getObjectId().isBlank()) {
-            AccessibleObject obj = handleDirectAccess(req.getObjectId(), req.getObjectEntityClass(), identityId, requestedById, req, ruleSummary);
+        } else if (req.getObjectId() != null && !req.getObjectId().isBlank()) { //Einzelnanfrage von Objetk
+            AccessibleObject obj = handleDirectAccess(applicationId, req.getObjectId(), req.getObjectEntityClass(), identityId, requestedById, req, ruleSummary);
             if (obj != null) accessibleObjects.add(obj);
-        } else if (req.getObjectEntityClass() != null && !req.getObjectEntityClass().isBlank()) {
-            accessibleObjects.addAll(handleSearchAccess(identityId, requestedById, req, ruleSummary));
+        } else if (req.getObjectEntityClass() != null && !req.getObjectEntityClass().isBlank()) { //Suche nach allen verfügbaren Objekten
+            accessibleObjects.addAll(handleSearchAccess(applicationId, identityId, requestedById, req, ruleSummary));
         }
 
-        logAccessCounter(); // optional, Debug
+        logAccessCounter(); // optional für Audit, Debug
 
         return new AccessResponseDto(accessibleObjects, "success", null, Instant.now().toString());
     }
 
     /**
-     * Spezialfall: Nur gefilterte Daten als Ergebnis.
+     * Filteranfragen landen hier und werden weitergereicht, am Ende hier ausgegeben mit Info über angewendete Regeln
      */
     public FilteredAccessResponseDto handleFilteredResponse(AccessRequestDto req) {
         Map<String, RuleUsage> ruleSummary = new HashMap<>();
@@ -100,12 +101,12 @@ public class ObjectRequestHandler {
     /**
      * Verarbeitet den direkten Zugriff auf ein Objekt.
      */
-    private AccessibleObject handleDirectAccess(String objectId, String entityClass, String identityId, String requestedById,
+    private AccessibleObject handleDirectAccess(String applicationId, String objectId, String entityClass, String identityId, String requestedById,
                                                 AccessRequestDto req, Map<String, RuleUsage> ruleSummary) {
 
         updateAccessCount(identityId, requestedById, objectId, req);
 
-        AccessRights rights = accessEvaluator.evaluateDirectAccess(objectId, identityId, requestedById);
+        AccessRights rights = accessEvaluator.evaluateDirectAccess(applicationId, objectId, identityId, requestedById);
         if (rights == null || rights.isEmpty()) {
             log.info("No access rights for object '{}', identity '{}'", objectId, identityId);
             return null;
@@ -114,6 +115,7 @@ public class ObjectRequestHandler {
         Map<String, Object> rawData = dataFetcher.fetchRawData(objectId, entityClass);
 
         return responseBuilder.build(
+                applicationId,
                 objectId,
                 entityClass,
                 identityId,
@@ -127,10 +129,11 @@ public class ObjectRequestHandler {
     /**
      * Verarbeitet Zugriff per Suchanfrage (z. B. auf alle Fahrzeuge einer Klasse).
      */
-    private List<AccessibleObject> handleSearchAccess(String identityId, String requestedById,
+    private List<AccessibleObject> handleSearchAccess(String applicationId, String identityId, String requestedById,
                                                       AccessRequestDto req, Map<String, RuleUsage> ruleSummary) {
 
         List<ObjectAccess> accessList = accessEvaluator.evaluateSearchAccess(
+                applicationId,
                 identityId,
                 requestedById,
                 req.getObjectEntityClass(),
@@ -150,6 +153,7 @@ public class ObjectRequestHandler {
             Map<String, Object> raw = dataFetcher.fetchRawData(o.getObjectId(), req.getObjectEntityClass());
 
             results.add(responseBuilder.build(
+                    applicationId,
                     o.getObjectId(),
                     req.getObjectEntityClass(),
                     identityId,
@@ -164,14 +168,17 @@ public class ObjectRequestHandler {
     }
 
     /**
-     * Konvertiert AccessRights (von Transit) in interne ObjectProperties.
+     * Konvertiert AccessRights (von der Policy Machine) in interne ObjectProperties.
      */
     private ObjectProperties toProperties(AccessRights rights) {
         return new ObjectProperties(
                 new ArrayList<>(rights.getRead()),
                 new ArrayList<>(rights.getWrite()),
                 new ArrayList<>(rights.getSharedRead()),
-                new ArrayList<>(rights.getSharedWrite())
+                new ArrayList<>(rights.getSharedWrite()),
+                rights.getDigitsAccess() != null
+                    ? new ArrayList<>(rights.getDigitsAccess())
+                    : List.of()
         );
     }
 
@@ -210,7 +217,7 @@ public class ObjectRequestHandler {
     }
 
     /**
-     * Gibt den aktuellen Zustand des Zugriffszählers aus (nur Debug).
+     * Gibt den aktuellen Zustand des Zugriffszählers aus.
      */
     private void logAccessCounter() {
         log.info("---- Aktueller Zugriffszaehler (accessCounter) ----");

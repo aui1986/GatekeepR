@@ -17,7 +17,10 @@ import java.util.Map;
 @AllArgsConstructor
 public class AccessibleObject {
 
-    /** ID des Objekts, auf das zugegriffen werden kann (z. B. Fahrzeug-ID) */
+    /** ID der Application, auf das zugegriffen werden kann  */
+    private String applicationId;
+
+    /** ID des Objekts, auf das zugegriffen werden kann  */
     private String objectId;
 
     /** Klasse bzw. Typ des Objekts (z. B. "Vehicle", "Person") */
