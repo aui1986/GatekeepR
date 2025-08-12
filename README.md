@@ -41,7 +41,7 @@ Das System verarbeitet Antworten aus Quellsystemen, filtert sie basierend auf de
 
 ```bash
 # Projekt klonen
-git clone https://github.com/<DEIN-USERNAME>/GatekeepR.git
+git clone https://github.com/aui1986/GatekeepR.git
 cd GatekeepR/prototyp
 
 # Build
